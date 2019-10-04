@@ -15,6 +15,7 @@
  */
 
 /**
- * Parsing utils
+ * 这个包放各种解析工具.<br/>
+ * Parsing utils.
  */
 package org.apache.ibatis.parsing;

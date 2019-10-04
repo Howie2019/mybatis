@@ -40,8 +40,8 @@ public class EnumOrdinalTypeHandler<E extends Enum<E>> extends BaseTypeHandler<E
   }
 
   @Override
-  public void setNonNullParameter(PreparedStatement ps, int i, E parameter, JdbcType jdbcType) throws SQLException {
-    ps.setInt(i, parameter.ordinal());
+  public void setNonNullParameter(PreparedStatement ps, int parameterIndex, E value, JdbcType jdbcType) throws SQLException {
+    ps.setInt(parameterIndex, value.ordinal());
   }
 
   @Override

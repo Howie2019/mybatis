@@ -15,6 +15,7 @@
  */
 
 /**
- * Bings mapper interfaces with mapped statements
+ * 接口绑定：把mapper.xml的sql语句绑定到XXmapper.java接口中的方法中<br/>
+ * Binding mapper interfaces with mapped statements
  */
 package org.apache.ibatis.binding;

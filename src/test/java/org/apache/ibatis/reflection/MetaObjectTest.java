@@ -41,6 +41,7 @@ public class MetaObjectTest {
     RichType rich = new RichType();
     MetaObject meta = SystemMetaObject.forObject(rich);
     meta.setValue("richField", "foo");
+    //System.out.println(meta.getValue("richField"));
     assertEquals("foo", meta.getValue("richField"));
   }
 
@@ -49,6 +50,7 @@ public class MetaObjectTest {
     RichType rich = new RichType();
     MetaObject meta = SystemMetaObject.forObject(rich);
     meta.setValue("richType.richField", "foo");
+    System.out.println(meta.getValue("richType.richField"));
     assertEquals("foo", meta.getValue("richType.richField"));
   }
 
@@ -267,17 +269,17 @@ public class MetaObjectTest {
   @Test
   public void shouldNotUseObjectWrapperFactoryByDefault() {
     MetaObject meta = SystemMetaObject.forObject(new Author());
-    assertTrue(!meta.getObjectWrapper().getClass().equals(CustomBeanWrapper.class));
+    assertTrue(!meta.getWrapper().getClass().equals(CustomBeanWrapper.class));
   }
 
   @Test
   public void shouldUseObjectWrapperFactoryWhenSet() {
     MetaObject meta = MetaObject.forObject(new Author(), SystemMetaObject.DEFAULT_OBJECT_FACTORY, new CustomBeanWrapperFactory());
-    assertTrue(meta.getObjectWrapper().getClass().equals(CustomBeanWrapper.class));
+    assertTrue(meta.getWrapper().getClass().equals(CustomBeanWrapper.class));
     
     // Make sure the old default factory is in place and still works
     meta = SystemMetaObject.forObject(new Author());
-    assertFalse(meta.getObjectWrapper().getClass().equals(CustomBeanWrapper.class));
+    assertFalse(meta.getWrapper().getClass().equals(CustomBeanWrapper.class));
   }
 
   @Test 

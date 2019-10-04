@@ -21,14 +21,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author Clinton Begin
- */
-/**
- * 拦截
+ * 此注解标记这个类是一个plugin
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Intercepts {
-  Signature[] value();
+    Signature[] value();
 }
 

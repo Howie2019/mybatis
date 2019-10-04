@@ -21,11 +21,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author Eduardo Macarron
+ * 用于TypeHandler, 指明这个TypeHandler对应的JdbcType
+ *
+ * @see org.apache.ibatis.submitted.typehandler.StringTrimmingTypeHandler
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface MappedJdbcTypes {
-  public JdbcType[] value();
-  boolean includeNullJdbcType() default false;
+    public JdbcType[] value();
+
+    boolean includeNullJdbcType() default false;
 }

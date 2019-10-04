@@ -28,10 +28,10 @@ import java.sql.SQLException;
 public class ClobTypeHandler extends BaseTypeHandler<String> {
 
   @Override
-  public void setNonNullParameter(PreparedStatement ps, int i, String parameter, JdbcType jdbcType)
+  public void setNonNullParameter(PreparedStatement ps, int parameterIndex, String value, JdbcType jdbcType)
       throws SQLException {
-    StringReader reader = new StringReader(parameter);
-    ps.setCharacterStream(i, reader, parameter.length());
+    StringReader reader = new StringReader(value);
+    ps.setCharacterStream(parameterIndex, reader, value.length());
   }
 
   @Override

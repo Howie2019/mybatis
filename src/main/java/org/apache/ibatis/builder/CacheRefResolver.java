@@ -18,23 +18,26 @@ package org.apache.ibatis.builder;
 import org.apache.ibatis.cache.Cache;
 
 /**
- * @author Clinton Begin
- */
-/**
+ * 唯一对外接口: resolveCacheRef<br/>
  * 缓存引用解析器
- *
  */
 public class CacheRefResolver {
-  private final MapperBuilderAssistant assistant;
-  private final String cacheRefNamespace;
+    private final MapperBuilderAssistant assistant;
+    /**
+     * 缓存命名空间, 用于resolveCacheRef方法
+     */
+    private final String cacheRefNamespace;
 
-  public CacheRefResolver(MapperBuilderAssistant assistant, String cacheRefNamespace) {
-    this.assistant = assistant;
-    this.cacheRefNamespace = cacheRefNamespace;
-  }
+    public CacheRefResolver(MapperBuilderAssistant assistant, String cacheRefNamespace) {
+        this.assistant = assistant;
+        this.cacheRefNamespace = cacheRefNamespace;
+    }
 
-  public Cache resolveCacheRef() {
-      //反调MapperBuilderAssistant解析
-    return assistant.useCacheRef(cacheRefNamespace);
-  }
+    /**
+     *
+     */
+    public Cache resolveCacheRef() {
+        //委托助手完成
+        return assistant.useCacheRef(cacheRefNamespace);
+    }
 }

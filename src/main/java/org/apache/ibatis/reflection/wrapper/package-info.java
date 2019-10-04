@@ -15,6 +15,10 @@
  */
 
 /**
+ * 不管Bean, Map 还是 Collection, 只要包装一下, 就能把他们统一对待(利用了多态)
+ * <p>
+ * 把XX包装一下就得到了XXWrapper. "包装一下"意味着XXWrapper持有一个XX
+ * <p>
  * Object wrappers.
  */
 package org.apache.ibatis.reflection.wrapper;

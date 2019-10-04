@@ -19,27 +19,31 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * @author Clinton Begin
- */
-/**
- * getter调用者
- * 
+ * 通过反射, 获取字段的值
  */
 public class GetFieldInvoker implements Invoker {
-  private Field field;
+    private Field field;
 
-  public GetFieldInvoker(Field field) {
-    this.field = field;
-  }
+    /**
+     * @param field 待取值的字段. 也就是调用invoke将得到target的对应的字段值
+     */
+    public GetFieldInvoker(Field field) {
+        this.field = field;
+    }
 
-  //就是调用Field.get
-  @Override
-  public Object invoke(Object target, Object[] args) throws IllegalAccessException, InvocationTargetException {
-    return field.get(target);
-  }
+    /**
+     * 获得target的field字段的值
+     */
+    @Override
+    public Object invoke(Object target, Object[] args) throws IllegalAccessException, InvocationTargetException {
+        return field.get(target);
+    }
 
-  @Override
-  public Class<?> getType() {
-    return field.getType();
-  }
+    /**
+     * @return a Class object identifying the declared type of the field represented by this object
+     */
+    @Override
+    public Class<?> getType() {
+        return field.getType();
+    }
 }

@@ -17,7 +17,7 @@
 
 -->
 
-<!ELEMENT configuration (properties?, settings?, typeAliases?, typeHandlers?, objectFactory?, objectWrapperFactory?, plugins?, environments?, databaseIdProvider?, mappers?)>
+<!ELEMENT configuration (properties?, settings?, typeAliases?, typeHandlers?, objectFactory?, wrapperFactory?, plugins?, environments?, databaseIdProvider?, mappers?)>
 
 <!ELEMENT databaseIdProvider (property*)>
 <!ATTLIST databaseIdProvider
@@ -66,8 +66,8 @@ handler CDATA #REQUIRED
 type CDATA #REQUIRED
 >
 
-<!ELEMENT objectWrapperFactory (property*)>
-<!ATTLIST objectWrapperFactory
+<!ELEMENT wrapperFactory (property*)>
+<!ATTLIST wrapperFactory
 type CDATA #REQUIRED
 >
 

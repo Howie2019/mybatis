@@ -18,24 +18,18 @@ package org.apache.ibatis.mapping;
 import java.sql.ResultSet;
 
 /**
- * @author Clinton Begin
- */
-/**
- * 
- * 结果集类型
+ * 结果集类型, 包含: FORWARD_ONLY, SCROLL_INSENSITIVE, SCROLL_SENSITIVE三个值
  */
 public enum ResultSetType {
-  FORWARD_ONLY(ResultSet.TYPE_FORWARD_ONLY),
-  SCROLL_INSENSITIVE(ResultSet.TYPE_SCROLL_INSENSITIVE),
-  SCROLL_SENSITIVE(ResultSet.TYPE_SCROLL_SENSITIVE);
+    FORWARD_ONLY(ResultSet.TYPE_FORWARD_ONLY), SCROLL_INSENSITIVE(ResultSet.TYPE_SCROLL_INSENSITIVE), SCROLL_SENSITIVE(ResultSet.TYPE_SCROLL_SENSITIVE);
 
-  private int value;
+    private int value;
 
-  ResultSetType(int value) {
-    this.value = value;
-  }
+    ResultSetType(int value) {
+        this.value = value;
+    }
 
-  public int getValue() {
-    return value;
-  }
+    public int getValue() {
+        return value;
+    }
 }

@@ -15,6 +15,7 @@
  */
 
 /**
+ * 装饰器模式
  * Contains cache decorators
  */
 package org.apache.ibatis.cache.decorators;

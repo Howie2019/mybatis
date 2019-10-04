@@ -28,8 +28,8 @@ import java.sql.SQLException;
 public class BigIntegerTypeHandler extends BaseTypeHandler<BigInteger> {
 
   @Override
-  public void setNonNullParameter(PreparedStatement ps, int i, BigInteger parameter, JdbcType jdbcType) throws SQLException {
-    ps.setBigDecimal(i, new BigDecimal(parameter));
+  public void setNonNullParameter(PreparedStatement ps, int parameterIndex, BigInteger value, JdbcType jdbcType) throws SQLException {
+    ps.setBigDecimal(parameterIndex, new BigDecimal(value));
   }
 
   @Override

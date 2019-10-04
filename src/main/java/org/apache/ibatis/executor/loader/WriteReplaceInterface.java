@@ -18,10 +18,10 @@ package org.apache.ibatis.executor.loader;
 import java.io.ObjectStreamException;
 
 /**
- * @author Eduardo Macarron
+ * 未被继承, 都是匿名实现此接口
  */
 public interface WriteReplaceInterface {
 
-  Object writeReplace() throws ObjectStreamException;
+    Object writeReplace() throws ObjectStreamException;
 
 }

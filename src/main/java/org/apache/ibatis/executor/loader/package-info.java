@@ -15,6 +15,7 @@
  */
 
 /**
+ * 把数据库查询结果加载到bean里
  * Base package for loading results into beans
  */
 package org.apache.ibatis.executor.loader;

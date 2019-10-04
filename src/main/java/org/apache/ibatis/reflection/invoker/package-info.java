@@ -15,6 +15,6 @@
  */
 
 /**
- * Unused.
+ * 通过反射get/set字段, 或者调用方法.
  */
 package org.apache.ibatis.reflection.invoker;

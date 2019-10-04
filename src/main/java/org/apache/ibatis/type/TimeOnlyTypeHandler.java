@@ -28,9 +28,9 @@ import java.util.Date;
 public class TimeOnlyTypeHandler extends BaseTypeHandler<Date> {
 
   @Override
-  public void setNonNullParameter(PreparedStatement ps, int i, Date parameter, JdbcType jdbcType)
+  public void setNonNullParameter(PreparedStatement ps, int parameterIndex, Date value, JdbcType jdbcType)
       throws SQLException {
-    ps.setTime(i, new Time(parameter.getTime()));
+    ps.setTime(parameterIndex, new Time(value.getTime()));
   }
 
   @Override

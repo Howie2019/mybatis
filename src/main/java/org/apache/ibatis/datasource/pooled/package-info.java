@@ -15,6 +15,7 @@
  */
 
 /**
+ * 单线程的, 池化的数据源
  * Simple single-thread pooled datasource
  */
 package org.apache.ibatis.datasource.pooled;

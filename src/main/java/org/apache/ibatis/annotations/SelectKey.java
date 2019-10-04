@@ -15,28 +15,54 @@
  */
 package org.apache.ibatis.annotations;
 
+import org.apache.ibatis.mapping.StatementType;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.apache.ibatis.mapping.StatementType;
-
 /**
+ * 对应.xml的selectKey标签
+ * <p>
+ * 用于在插入一条记录后不执行select直接获得插入记录的主键值(包括自增主键和非自增主键).
+ * <p>
+ * 注意: 这个主键不是javaBean中本身就有的, 而是数据库自动生成的(设置autoincrement或者调用uuid/nextval函数).
+ * mybatis会把这个数据库生成的主键回填到javaBean中
+ * <p>
+ * 见P36
+ *
  * @author Clinton Begin
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface SelectKey {
-  String[] statement();
+    /**
+     * SQL语句, MySQL数据库传入"SELECT LAST_INSERT_ID()"
+     */
+    String[] statement();
 
-  String keyProperty();
+    /**
+     * 自增主键对应的javaBean的属性名
+     */
+    String keyProperty();
 
-  String keyColumn() default "";
+    String keyColumn() default "";
 
-  boolean before();
+    /**
+     * 函数在insert之前执行吗?
+     * <p>
+     * 自增主键填after, 非自增主键填before
+     */
+    boolean before();
 
-  Class<?> resultType();
+    /**
+     * 函数返回值类型(在java中对应的类型)
+     */
+    Class<?> resultType();
 
-  StatementType statementType() default StatementType.PREPARED;
+    /**
+     * 从StatementType这个枚举类型中选一填入
+     */
+    StatementType statementType() default StatementType.PREPARED;
 }

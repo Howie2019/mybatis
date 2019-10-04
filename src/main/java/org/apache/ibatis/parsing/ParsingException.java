@@ -17,28 +17,26 @@ package org.apache.ibatis.parsing;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 
+
 /**
- * @author Clinton Begin
- */
-/**
- * 解析异常
+ * 解析发生错误时抛出此异常
  */
 public class ParsingException extends PersistenceException {
-  private static final long serialVersionUID = -176685891441325943L;
+    private static final long serialVersionUID = -176685891441325943L;
 
-  public ParsingException() {
-    super();
-  }
+    public ParsingException() {
+        super();
+    }
 
-  public ParsingException(String message) {
-    super(message);
-  }
+    public ParsingException(String message) {
+        super(message);
+    }
 
-  public ParsingException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    public ParsingException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  public ParsingException(Throwable cause) {
-    super(cause);
-  }
+    public ParsingException(Throwable cause) {
+        super(cause);
+    }
 }

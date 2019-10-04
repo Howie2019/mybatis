@@ -27,9 +27,9 @@ import java.sql.Timestamp;
 public class SqlTimestampTypeHandler extends BaseTypeHandler<Timestamp> {
 
   @Override
-  public void setNonNullParameter(PreparedStatement ps, int i, Timestamp parameter, JdbcType jdbcType)
+  public void setNonNullParameter(PreparedStatement ps, int parameterIndex, Timestamp value, JdbcType jdbcType)
       throws SQLException {
-    ps.setTimestamp(i, parameter);
+    ps.setTimestamp(parameterIndex, value);
   }
 
   @Override

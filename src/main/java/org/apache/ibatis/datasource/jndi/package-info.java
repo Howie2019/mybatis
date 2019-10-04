@@ -16,5 +16,7 @@
 
 /**
  * JNDI Datasource factory
+ * <p>
+ * JNDI使用外部数据源, 如服务器提供的数据源
  */
 package org.apache.ibatis.datasource.jndi;

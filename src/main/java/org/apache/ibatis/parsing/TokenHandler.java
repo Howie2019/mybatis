@@ -16,14 +16,11 @@
 package org.apache.ibatis.parsing;
 
 /**
- * @author Clinton Begin
- */
-/**
- * 记号处理器
- * 
+ * 先解析, 解析完再处理.
+ * 记号处理器接口
  */
 public interface TokenHandler {
-	//处理记号
-  String handleToken(String content);
+    //处理记号
+    String handleToken(String content);
 }
 

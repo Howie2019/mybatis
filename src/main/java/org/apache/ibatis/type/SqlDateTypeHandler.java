@@ -27,9 +27,9 @@ import java.sql.SQLException;
 public class SqlDateTypeHandler extends BaseTypeHandler<Date> {
 
   @Override
-  public void setNonNullParameter(PreparedStatement ps, int i, Date parameter, JdbcType jdbcType)
+  public void setNonNullParameter(PreparedStatement ps, int parameterIndex, Date value, JdbcType jdbcType)
       throws SQLException {
-    ps.setDate(i, parameter);
+    ps.setDate(parameterIndex, value);
   }
 
   @Override

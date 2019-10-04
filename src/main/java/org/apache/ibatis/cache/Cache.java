@@ -19,13 +19,9 @@ import java.util.concurrent.locks.ReadWriteLock;
 
 /**
  * SPI for cache providers.
- * 
  * One instance of cache will be created for each namespace.
- * 
  * The cache implementation must have a constructor that receives the cache id as an String parameter.
- * 
  * MyBatis will pass the namespace as id to the constructor.
- * 
  * <pre>
  * public MyCache(final String id) {
  *  if (id == null) {
@@ -35,67 +31,68 @@ import java.util.concurrent.locks.ReadWriteLock;
  *  initialize();
  * }
  * </pre>
- *
- * @author Clinton Begin
  */
 
 /**
- * 缓存
- *
+ * SPI
+ * <p>
+ * 一种服务发现机制. 暂时不深究
+ * <p>
+ * 将为每个命名空间创建一个缓存实例(二级缓存)。
+ * <p>
+ * 实现类必须有一个设置id的构造器(例如: public PerpetualCache(String id) {this.id = id;}).
  */
 public interface Cache {
-
-  /**
-   * @return The identifier of this cache
-   */
+    /**
+     * @return The identifier of this cache
+     */
     //取得ID
-  String getId();
+    String getId();
 
-  /**
-   * @param key Can be any object but usually it is a {@link CacheKey}
-   * @param value The result of a select.
-   */
-  //存入值
-  void putObject(Object key, Object value);
+    /**
+     * @param key   Can be any object but usually it is a {@link CacheKey}
+     * @param value The result of a select.
+     */
+    //存入值
+    void putObject(Object key, Object value);
 
-  /**
-   * @param key The key
-   * @return The object stored in the cache.
-   */
-  //获取值
-  Object getObject(Object key);
+    /**
+     * @param key The key
+     * @return The object stored in the cache.
+     */
+    //获取值
+    Object getObject(Object key);
 
-  /**
-   * Optional. It is not called by the core.
-   * 
-   * @param key The key
-   * @return The object that was removed
-   */
-  //删除值
-  Object removeObject(Object key);
+    /**
+     * Optional. It is not called by the core.
+     *
+     * @param key The key
+     * @return The object that was removed
+     */
+    //删除值
+    Object removeObject(Object key);
 
-  /**
-   * Clears this cache instance
-   */  
-  //清空
-  void clear();
+    /**
+     * Clears this cache instance
+     */
+    //清空
+    void clear();
 
-  /**
-   * Optional. This method is not called by the core.
-   * 
-   * @return The number of elements stored in the cache (not its capacity).
-   */
-  //取得大小
-  int getSize();
-  
-  /** 
-   * Optional. As of 3.2.6 this method is no longer called by the core.
-   *  
-   * Any locking needed by the cache must be provided internally by the cache provider.
-   * 
-   * @return A ReadWriteLock 
-   */
-  //取得读写锁, 从3.2.6开始没用了，要SPI自己实现锁
-  ReadWriteLock getReadWriteLock();
+    /**
+     * Optional. This method is not called by the core.
+     *
+     * @return The number of elements stored in the cache (not its capacity).
+     */
+    //取得大小
+    int getSize();
+
+    /**
+     * Optional. As of 3.2.6 this method is no longer called by the core.
+     * Any locking needed by the cache must be provided internally by the cache provider.
+     *
+     * @return A ReadWriteLock
+     */
+    //取得读写锁, 从3.2.6开始没用了，要SPI自己实现锁
+    ReadWriteLock getReadWriteLock();
 
 }

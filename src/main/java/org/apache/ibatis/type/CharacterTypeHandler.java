@@ -26,8 +26,8 @@ import java.sql.SQLException;
 public class CharacterTypeHandler extends BaseTypeHandler<Character> {
 
   @Override
-  public void setNonNullParameter(PreparedStatement ps, int i, Character parameter, JdbcType jdbcType) throws SQLException {
-    ps.setString(i, parameter.toString());
+  public void setNonNullParameter(PreparedStatement ps, int parameterIndex, Character value, JdbcType jdbcType) throws SQLException {
+    ps.setString(parameterIndex, value.toString());
   }
 
   @Override

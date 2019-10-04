@@ -15,22 +15,28 @@
  */
 package org.apache.ibatis.executor.loader;
 
-import java.util.List;
-import java.util.Properties;
-
 import org.apache.ibatis.reflection.factory.ObjectFactory;
 import org.apache.ibatis.session.Configuration;
 
-/**
- * @author Eduardo Macarron
- */
+import java.util.List;
+import java.util.Properties;
+
 /**
  * 延迟加载代理工厂
  */
 public interface ProxyFactory {
 
-  void setProperties(Properties properties);
+    void setProperties(Properties properties);
 
-  Object createProxy(Object target, ResultLoaderMap lazyLoader, Configuration configuration, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs);
-  
+  /**
+   * @param target
+   * @param lazyLoader
+   * @param configuration
+   * @param objectFactory
+   * @param constructorArgTypes
+   * @param constructorArgs
+   * @return
+   */
+    Object createProxy(Object target, ResultLoaderMap lazyLoader, Configuration configuration, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs);
+
 }

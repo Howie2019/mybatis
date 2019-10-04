@@ -21,18 +21,26 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author Clinton Begin
- */
-/**
- * 签名
+ * 表示一个方法签名, (type,method,args)这个三维坐标能唯一定位一个方法
+ * <p>
+ * 用作Intercepts的参数,
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Signature {
-  //就是定义哪些类，方法，参数需要被拦截
-  Class<?> type();
+    /**
+     * 拦截哪个类
+     */
+    //就是定义哪些类，方法，参数需要被拦截
+    Class<?> type();
 
-  String method();
+    /**
+     * 拦截哪个方法
+     */
+    String method();
 
-  Class<?>[] args();
+    /**
+     * 方法参数的类型, 有重载方法的话需要靠参数类型来区分
+     */
+    Class<?>[] args();
 }

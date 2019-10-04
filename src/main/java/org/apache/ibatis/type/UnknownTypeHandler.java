@@ -39,10 +39,10 @@ public class UnknownTypeHandler extends BaseTypeHandler<Object> {
   }
 
   @Override
-  public void setNonNullParameter(PreparedStatement ps, int i, Object parameter, JdbcType jdbcType)
+  public void setNonNullParameter(PreparedStatement ps, int parameterIndex, Object value, JdbcType jdbcType)
       throws SQLException {
-    TypeHandler handler = resolveTypeHandler(parameter, jdbcType);
-    handler.setParameter(ps, i, parameter, jdbcType);
+    TypeHandler handler = resolveTypeHandler(value, jdbcType);
+    handler.setParameter(ps, parameterIndex, value, jdbcType);
   }
 
   @Override

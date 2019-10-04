@@ -15,6 +15,8 @@
  */
 
 /**
- * Base package for Datasources
+ * 本包对应config.xml的dataSource标签.
+ *
+ * mybatis提供三种数据源: POOLED, UNPOOLED, JNDI. 分别对应本包下的三个同名子包
  */
 package org.apache.ibatis.datasource;

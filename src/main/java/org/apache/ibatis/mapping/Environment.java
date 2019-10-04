@@ -15,82 +15,85 @@
  */
 package org.apache.ibatis.mapping;
 
-import javax.sql.DataSource;
-
 import org.apache.ibatis.transaction.TransactionFactory;
 
+import javax.sql.DataSource;
+
 /**
- * @author Clinton Begin
- */
-/**
- * 环境
+ * Environment对应配置文件的<environment>元素, 表示数据库环境(开发所用数据库和生产往往不一样)
  * 决定加载哪种环境(开发环境/生产环境)
  */
 public final class Environment {
-  //环境id
-  private final String id;
-  //事务工厂
-  private final TransactionFactory transactionFactory;
-  //数据源
-  private final DataSource dataSource;
+    //环境id
+    private final String id;
 
-  public Environment(String id, TransactionFactory transactionFactory, DataSource dataSource) {
-    if (id == null) {
-      throw new IllegalArgumentException("Parameter 'id' must not be null");
-    }
-    if (transactionFactory == null) {
-        throw new IllegalArgumentException("Parameter 'transactionFactory' must not be null");
-    }
-    this.id = id;
-    if (dataSource == null) {
-      throw new IllegalArgumentException("Parameter 'dataSource' must not be null");
-    }
-    this.transactionFactory = transactionFactory;
-    this.dataSource = dataSource;
-  }
+    /**
+     * 对应<environment>元素下的<transactionManager>节点
+     */
+    private final TransactionFactory transactionFactory;
+    /**
+     * 对应<environment>元素下的<dataSource>节点
+     */
+    private final DataSource dataSource;
 
-  //一个静态内部类Builder
-  //建造模式
-  //用法应该是new Environment.Builder(id).transactionFactory(xx).dataSource(xx).build();
-  public static class Builder {
-      private String id;
-      private TransactionFactory transactionFactory;
-      private DataSource dataSource;
-
-    public Builder(String id) {
-      this.id = id;
+    public Environment(String id, TransactionFactory transactionFactory, DataSource dataSource) {
+        if (id == null) {
+            throw new IllegalArgumentException("Parameter 'id' must not be null");
+        }
+        if (transactionFactory == null) {
+            throw new IllegalArgumentException("Parameter 'transactionFactory' must not be null");
+        }
+        this.id = id;
+        if (dataSource == null) {
+            throw new IllegalArgumentException("Parameter 'dataSource' must not be null");
+        }
+        this.transactionFactory = transactionFactory;
+        this.dataSource = dataSource;
     }
 
-    public Builder transactionFactory(TransactionFactory transactionFactory) {
-      this.transactionFactory = transactionFactory;
-      return this;
+    //一个静态内部类Builder
+    //建造模式
+
+    /** 用法是new Environment.Builder(id).transactionFactory(xx).dataSource(xx).build();build方法返回Environment */
+    public static class Builder {
+        private String id;
+        private TransactionFactory transactionFactory;
+        private DataSource dataSource;
+
+        public Builder(String id) {
+            this.id = id;
+        }
+
+        public Builder transactionFactory(TransactionFactory transactionFactory) {
+            this.transactionFactory = transactionFactory;
+            return this;
+        }
+
+        public Builder dataSource(DataSource dataSource) {
+            this.dataSource = dataSource;
+            return this;
+        }
+
+        public String id() {
+            return this.id;
+        }
+
+        public Environment build() {
+            return new Environment(this.id, this.transactionFactory, this.dataSource);
+        }
+
     }
 
-    public Builder dataSource(DataSource dataSource) {
-      this.dataSource = dataSource;
-      return this;
+    public String getId() {
+        return this.id;
     }
 
-    public String id() {
-      return this.id;
+    public TransactionFactory getTransactionFactory() {
+        return this.transactionFactory;
     }
 
-    public Environment build() {
-      return new Environment(this.id, this.transactionFactory, this.dataSource);
+    public DataSource getDataSource() {
+        return this.dataSource;
     }
-
-  }
-
-  public String getId() {
-    return this.id;
-  }
-
-  public TransactionFactory getTransactionFactory() {
-    return this.transactionFactory;
-  }
-
-  public DataSource getDataSource() {
-    return this.dataSource;
-  }
 
 }

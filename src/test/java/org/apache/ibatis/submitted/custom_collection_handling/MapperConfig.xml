@@ -24,7 +24,7 @@
 <configuration>
 
     <objectFactory type="org.apache.ibatis.submitted.custom_collection_handling.CustomObjectFactory" />
-    <objectWrapperFactory type="org.apache.ibatis.submitted.custom_collection_handling.CustomObjectWrapperFactory" />
+    <wrapperFactory type="org.apache.ibatis.submitted.custom_collection_handling.CustomWrapperFactory" />
 
     <environments default="development">
         <environment id="development">

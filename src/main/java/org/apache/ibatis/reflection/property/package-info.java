@@ -15,6 +15,7 @@
  */
 
 /**
+ * 包含两个工具类和一个属性标记器
  * Tools for getting/setting properties
  */
 package org.apache.ibatis.reflection.property;

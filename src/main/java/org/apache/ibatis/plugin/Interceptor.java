@@ -18,21 +18,17 @@ package org.apache.ibatis.plugin;
 import java.util.Properties;
 
 /**
- * @author Clinton Begin
- */
-/**
- * 拦截器
- *
+ * 拦截器, 对应config.xml的plugin节点
  */
 public interface Interceptor {
 
-  //拦截
-  Object intercept(Invocation invocation) throws Throwable;
+    //拦截
+    Object intercept(Invocation invocation) throws Throwable;
 
-  //插入
-  Object plugin(Object target);
+    //插入
+    Object plugin(Object target);
 
-  //设置属性
-  void setProperties(Properties properties);
+    //设置属性
+    void setProperties(Properties properties);
 
 }

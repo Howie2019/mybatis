@@ -19,38 +19,37 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
+ * 对应config.xml的transactionManager节点. transactionManager的type属性为JDBC则使用JdbcTransaction这个实现类
+ * <p>
  * Wraps a database connection.
  * Handles the connection lifecycle that comprises: its creation, preparation, commit/rollback and close.
  * 事务，包装了一个Connection, 包含commit,rollback,close方法
- * 在 MyBatis 中有两种事务管理器类型(也就是 type=”[JDBC|MANAGED]”):  
+ * 在 MyBatis 中有两种事务管理器类型(也就是 type=”[JDBC|MANAGED]”):
  *
  * @author Clinton Begin
  */
 public interface Transaction {
 
-  /**
-   * Retrieve inner database connection
-   * @return DataBase connection
-   * @throws SQLException
-   */
-  Connection getConnection() throws SQLException;
+    /**
+     * Retrieve inner database connection
+     *
+     * @return DataBase connection
+     */
+    Connection getConnection() throws SQLException;
 
-  /**
-   * Commit inner database connection.
-   * @throws SQLException
-   */
-  void commit() throws SQLException;
+    /**
+     * Commit inner database connection.
+     */
+    void commit() throws SQLException;
 
-  /**
-   * Rollback inner database connection.
-   * @throws SQLException
-   */
-  void rollback() throws SQLException;
+    /**
+     * Rollback inner database connection.
+     */
+    void rollback() throws SQLException;
 
-  /**
-   * Close inner database connection.
-   * @throws SQLException
-   */
-  void close() throws SQLException;
+    /**
+     * Close inner database connection.
+     */
+    void close() throws SQLException;
 
 }

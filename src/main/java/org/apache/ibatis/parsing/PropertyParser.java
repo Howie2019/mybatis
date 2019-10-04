@@ -18,37 +18,39 @@ package org.apache.ibatis.parsing;
 import java.util.Properties;
 
 /**
- * @author Clinton Begin
- */
-/**
- * 属性解析器
+ * 用properties标签引入或者配置一系列property, 然后通过${xxx}的形式在.xml其他地方引用
+ * <p>
+ * 而这个类就是用于解析.xml文件中的property引用
  */
 public class PropertyParser {
 
-  private PropertyParser() {
-    // Prevent Instantiation
-  }
-
-  public static String parse(String string, Properties variables) {
-    VariableTokenHandler handler = new VariableTokenHandler(variables);
-    GenericTokenParser parser = new GenericTokenParser("${", "}", handler);
-    return parser.parse(string);
-  }
-
-  //就是一个map，用相应的value替换key
-  private static class VariableTokenHandler implements TokenHandler {
-    private Properties variables;
-
-    public VariableTokenHandler(Properties variables) {
-      this.variables = variables;
+    private PropertyParser() {
+        // Prevent Instantiation
     }
 
-    @Override
-    public String handleToken(String content) {
-      if (variables != null && variables.containsKey(content)) {
-        return variables.getProperty(content);
-      }
-      return "${" + content + "}";
+    /**
+     * 识别${}这种模式
+     */
+    public static String parse(String string, Properties variables) {
+        VariableTokenHandler handler = new VariableTokenHandler(variables);
+        GenericTokenParser genericTokenParser = new GenericTokenParser("${", "}", handler);
+        return genericTokenParser.parse(string);
     }
-  }
+
+    //就是一个map，用相应的value替换key
+    private static class VariableTokenHandler implements TokenHandler {
+        private Properties variables;
+
+        public VariableTokenHandler(Properties variables) {
+            this.variables = variables;
+        }
+
+        @Override
+        public String handleToken(String content) {
+            if (variables != null && variables.containsKey(content)) {
+                return variables.getProperty(content);
+            }
+            return "${" + content + "}";
+        }
+    }
 }

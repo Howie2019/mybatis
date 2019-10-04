@@ -17,10 +17,10 @@ package org.apache.ibatis.domain.misc;
 
 import org.apache.ibatis.domain.blog.Author;
 import org.apache.ibatis.reflection.MetaObject;
-import org.apache.ibatis.reflection.wrapper.ObjectWrapper;
-import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
+import org.apache.ibatis.reflection.wrapper.Wrapper;
+import org.apache.ibatis.reflection.wrapper.WrapperFactory;
 
-public class CustomBeanWrapperFactory implements ObjectWrapperFactory {
+public class CustomBeanWrapperFactory implements WrapperFactory {
   public boolean hasWrapperFor(Object object) {
     if (object instanceof Author) {
       return true;
@@ -29,7 +29,7 @@ public class CustomBeanWrapperFactory implements ObjectWrapperFactory {
     }
   }
   
-  public ObjectWrapper getWrapperFor(MetaObject metaObject, Object object) {
+  public Wrapper getWrapperFor(MetaObject metaObject, Object object) {
     return new CustomBeanWrapper(metaObject, object);
   }
 }

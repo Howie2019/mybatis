@@ -15,9 +15,9 @@ import org.apache.ibatis.type.TypeHandler;
 public class StringTrimmingTypeHandler implements TypeHandler<String> {
 
   @Override
-  public void setParameter(PreparedStatement ps, int i, String parameter,
-      JdbcType jdbcType) throws SQLException {
-    ps.setString(i, trim(parameter));
+  public void setParameter(PreparedStatement ps, int parameterIndex, String value,
+                           JdbcType jdbcType) throws SQLException {
+    ps.setString(parameterIndex, trim(value));
   }
 
   @Override

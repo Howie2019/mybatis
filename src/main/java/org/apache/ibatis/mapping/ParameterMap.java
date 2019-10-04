@@ -15,53 +15,54 @@
  */
 package org.apache.ibatis.mapping;
 
+import org.apache.ibatis.session.Configuration;
+
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.ibatis.session.Configuration;
-
 /**
- * @author Clinton Begin
+ * SQL输入参数映射
+ * 将传入的bean或者map中的的字段和mapper.xml中的参数配置做匹配
  */
 public class ParameterMap {
 
-  private String id;
-  private Class<?> type;
-  private List<ParameterMapping> parameterMappings;
+    private String id;
+    private Class<?> type;
+    private List<ParameterMapping> parameterMappings;
 
-  private ParameterMap() {
-  }
-
-  public static class Builder {
-    private ParameterMap parameterMap = new ParameterMap();
-
-    public Builder(Configuration configuration, String id, Class<?> type, List<ParameterMapping> parameterMappings) {
-      parameterMap.id = id;
-      parameterMap.type = type;
-      parameterMap.parameterMappings = parameterMappings;
+    private ParameterMap() {
     }
 
-    public Class<?> type() {
-      return parameterMap.type;
+    public static class Builder {
+        private ParameterMap parameterMap = new ParameterMap();
+
+        public Builder(Configuration configuration, String id, Class<?> type, List<ParameterMapping> parameterMappings) {
+            parameterMap.id = id;
+            parameterMap.type = type;
+            parameterMap.parameterMappings = parameterMappings;
+        }
+
+        public Class<?> type() {
+            return parameterMap.type;
+        }
+
+        public ParameterMap build() {
+            //lock down collections
+            parameterMap.parameterMappings = Collections.unmodifiableList(parameterMap.parameterMappings);
+            return parameterMap;
+        }
     }
 
-    public ParameterMap build() {
-      //lock down collections
-      parameterMap.parameterMappings = Collections.unmodifiableList(parameterMap.parameterMappings);
-      return parameterMap;
+    public String getId() {
+        return id;
     }
-  }
 
-  public String getId() {
-    return id;
-  }
+    public Class<?> getType() {
+        return type;
+    }
 
-  public Class<?> getType() {
-    return type;
-  }
-
-  public List<ParameterMapping> getParameterMappings() {
-    return parameterMappings;
-  }
+    public List<ParameterMapping> getParameterMappings() {
+        return parameterMappings;
+    }
 
 }

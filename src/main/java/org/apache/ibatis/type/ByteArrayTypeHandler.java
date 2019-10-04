@@ -26,9 +26,9 @@ import java.sql.SQLException;
 public class ByteArrayTypeHandler extends BaseTypeHandler<byte[]> {
 
   @Override
-  public void setNonNullParameter(PreparedStatement ps, int i, byte[] parameter, JdbcType jdbcType)
+  public void setNonNullParameter(PreparedStatement ps, int parameterIndex, byte[] value, JdbcType jdbcType)
       throws SQLException {
-    ps.setBytes(i, parameter);
+    ps.setBytes(parameterIndex, value);
   }
 
   @Override

@@ -15,6 +15,6 @@
  */
 
 /**
- * Type handlers.
+ * TypeHandler用于实现java数据类型和数据库的数据类型的相互转化, 对应config.xml的typeHandlers标签
  */
 package org.apache.ibatis.type;

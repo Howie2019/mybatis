@@ -24,10 +24,10 @@ import java.sql.*;
 public class BlobByteObjectArrayTypeHandler extends BaseTypeHandler<Byte[]> {
 
   @Override
-  public void setNonNullParameter(PreparedStatement ps, int i, Byte[] parameter, JdbcType jdbcType)
+  public void setNonNullParameter(PreparedStatement ps, int parameterIndex, Byte[] value, JdbcType jdbcType)
       throws SQLException {
-    ByteArrayInputStream bis = new ByteArrayInputStream(ByteArrayUtils.convertToPrimitiveArray(parameter));
-    ps.setBinaryStream(i, bis, parameter.length);
+    ByteArrayInputStream bis = new ByteArrayInputStream(ByteArrayUtils.convertToPrimitiveArray(value));
+    ps.setBinaryStream(parameterIndex, bis, value.length);
   }
 
   @Override

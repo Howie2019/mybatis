@@ -15,6 +15,7 @@
  */
 
 /**
+ * 单个查询结果的处理器. 用于处理结果集的某一个记录
  * Contains the result handlers.
  */
 package org.apache.ibatis.executor.result;

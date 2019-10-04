@@ -37,13 +37,13 @@ public class LastNameTypeHandler implements TypeHandler {
     return rs.getString(columnIndex);
   }
 
-  public void setParameter(PreparedStatement ps, int i, Object parameter,
+  public void setParameter(PreparedStatement ps, int parameterIndex, Object value,
                            JdbcType jdbcType) throws SQLException {
-    if (parameter == null) {
-      ps.setNull(i, Types.VARCHAR);
+    if (value == null) {
+      ps.setNull(parameterIndex, Types.VARCHAR);
     } else {
-      Name name = (Name) parameter;
-      ps.setString(i, name.getLastName());
+      Name name = (Name) value;
+      ps.setString(parameterIndex, name.getLastName());
     }
   }
 }

@@ -16,17 +16,14 @@
 package org.apache.ibatis.jdbc;
 
 /**
- * @author Clinton Begin
- */
-/**
- * SQL,干货都在AbstractSQL里
+ * 干货都在AbstractSQL里
  */
 public class SQL extends AbstractSQL<SQL> {
 
-  //fluent API
-  @Override
-  public SQL getSelf() {
-    return this;
-  }
+    //fluent API
+    @Override
+    public SQL getSelf() {
+        return this;
+    }
 
 }

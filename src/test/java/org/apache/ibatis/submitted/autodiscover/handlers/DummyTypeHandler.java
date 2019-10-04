@@ -31,7 +31,7 @@ import org.apache.ibatis.type.TypeHandler;
 @MappedTypes(BigInteger.class)
 public class DummyTypeHandler implements TypeHandler<Object> {
 
-    public void setParameter(PreparedStatement ps, int i, Object parameter, JdbcType jdbcType) throws SQLException {
+    public void setParameter(PreparedStatement ps, int parameterIndex, Object value, JdbcType jdbcType) throws SQLException {
     }
 
     public Object getResult(ResultSet rs, String columnName) throws SQLException {
